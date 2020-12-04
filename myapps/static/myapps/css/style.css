@@ -1,0 +1,165 @@
+
+.mycontainer{
+    width: 700px !important ;
+}
+
+/* Home style */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #2D3142;
+}
+
+
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+    margin-left: 50rem !important;
+    border-radius: calc(0.25rem - 1px);
+}
+/* Home style */
+.my-btn{
+    color: #fff;
+    background-color: #15243c;
+    border-color: #007bff !important;
+}
+
+/* for the nav bar color */
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #15243c !important;
+    border-color: #007bff;
+}
+
+.bg-dark {
+    background-color: #15243c !important;
+}
+
+
+.sb-sidenav-dark {
+    background-color: #4F5D75;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+.sb-sidenav-dark .sb-sidenav-footer {
+    background-color: #15243c;
+}
+
+
+
+
+#layoutSidenav #layoutSidenav_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    flex-grow: 1;
+    min-height: calc(100vh - 56px);
+    margin-left: -225px;
+    
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #EF8354;
+    border-radius: 0.25rem;
+}
+
+/* weatherapp style */
+
+.mysidenav{
+    position: absolute;
+    width: 944px;
+    height: 477px;
+    left: 354px;
+    top: 808px;
+
+    background: #2D3142;
+    border: 1px solid #4F5D75;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+}
+
+
+
+/* styling for the custom card */
+.customCard{
+    
+    width: auto !important;
+    height: 600px;
+    
+
+    background: #2D3142;
+    border: 1px solid #4F5D75;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    margin-bottom: 4px;
+
+}
+
+
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #4F5D75 !important;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    /* background-color: #fff; */
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    color:white;
+    /* border-radius: 0.25rem; */
+
+    background-color: #4f5d75;
+
+    border: 1px solid #2D3142;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 35px !important;
+    margin-bottom: 4px;
+
+}
+
+card-header {
+    
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color:#4F5D75 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: white !important;
+}
+
