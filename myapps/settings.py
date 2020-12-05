@@ -15,6 +15,7 @@ import django_heroku
 from decouple import config 
 import dj_database_url
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -86,11 +87,16 @@ WSGI_APPLICATION = 'myapps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ddeb4vn32hkmci',
+        'HOST': 'ec2-54-237-155-151.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'qiliadbghubtfn',
+        'PASSWORD': '0a9c6fe0cc9d859a01424542995e5a4be25f189930a321bea639d90865fe64ff'
+
+        
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
