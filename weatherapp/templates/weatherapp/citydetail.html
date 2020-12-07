@@ -8,11 +8,11 @@
 <main>
   <div class="card bg-dark text-white">
     <img src="{% static 'myapps/image/weatherhome.png' %}" class="card-img" alt="...">
-    {% for weatherdata in average_weatherdata3day_list%}
+    {% for weatherdata in average_weatherdata3day_lst%}
     
     <div class="card-img-overlay">
         <h5 class="card-title">{{weatherdata.city}}</h5>
-        <p class="card-text">Temp {{data.temp_c}}</p>
+        <p class="card-text"> {{data.temp_c}}</p>
         <p class="card-text"></p>
         
     </div>
