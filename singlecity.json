@@ -1,22 +1,22 @@
 [
     {
-        "city": "campala",
-        "region": "Tete",
-        "country": "Mozambique",
-        "localtime": "2020-12-07 3:48",
-        "temp_c": 20.3,
-        "temp_f": 68.5,
-        "description": "Patchy rain possible",
-        "icon": "//cdn.weatherapi.com/weather/64x64/night/176.png",
-        "wind_mph": 4.5,
-        "wind_kph": 7.2,
-        "wind_dir": "ESE",
+        "city": "ajman",
+        "region": "Ajman",
+        "country": "United Arab Emirates",
+        "localtime": "2020-12-07 5:55",
+        "temp_c": 24.0,
+        "temp_f": 75.2,
+        "description": "Partly cloudy",
+        "icon": "//cdn.weatherapi.com/weather/64x64/night/116.png",
+        "wind_mph": 0.0,
+        "wind_kph": 0.0,
+        "wind_dir": "SSE",
         "pressure_mb": 1013.0,
         "pressure_in": 30.4,
-        "precip_in": 0.01,
-        "precip_mm": 0.2,
-        "humidity": 78,
-        "feelslike_c": 20.3,
-        "feelslike_f": 68.5
+        "precip_in": 0.0,
+        "precip_mm": 0.0,
+        "humidity": 74,
+        "feelslike_c": 25.8,
+        "feelslike_f": 78.4
     }
 ]

@@ -145,7 +145,7 @@ def cityDetail(request, city):
             else:
                 
                 weatherdata = {
-                    'city': newcity.name,
+                    'city': newcity,
                     'region':r['location']['region'],
                     'country':r['location']['country'],
                     'localtime':r['location']['localtime'],
@@ -175,7 +175,7 @@ def cityDetail(request, city):
                 for data in r['forecast']['forecastday']:
                     for rsp in data['hour']:
                         weatherdata = {
-                        'city': newcity.name,
+                        'city': newcity,
                         'alldatetime':rsp['time'],
                         'alltemp_c':rsp['temp_c'],
                         'alltemp_f':rsp['temp_f'],
