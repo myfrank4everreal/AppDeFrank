@@ -11,47 +11,64 @@
     <div class="card-img-overlay">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text">Last updated 3 mins ago</p>
+        
     </div>
 </div>
     <div class="container-fluid">
         <h1 class="mt-4" style= "color:white;">Weather Info</h1>
-        <ol class="breadcrumb mb-4">
+        {% comment %} <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">user location</li>
-        </ol>
+        </ol> {% endcomment %}
+        <nav class="navbar navbar-light  mb-4 ">
+            <a class="navbar-brand ">My weather</a>
+            <form method = 'Post' class="  form-inline">
+               {% csrf_token %}
+
+               {{form.name}}
+                <a href="#" class="btn my-btn btn-outline-success my-2 my-sm-0" type="">Search</a>
+            </form>
+        </nav>
         {% comment %} <div class="row"> {% endcomment %}
             <div class="col-xl-6">
                 <div class="mb-9">
                     
                     <div class="card-body customCard text-center" style= " color:white;  ">
-                    
-                    <h5 >image<span style="color:blue;font-weight:bold">city name</span> </h5>
+                    {% for data in singlecity_weather_data %}
+                    <h5 ><image src="https:{{ data.icon}}"><span style="color:blue;font-weight:bold">{{ data.city }}</span> </h5>
+                    <h6>{{data.description}}</h6>
                         <ul class="list-group " style = "margin-top:40px; margin-bottom:20px;">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Cras justo odio
-                                <span class="badge badge-primary badge-pill">14</span>
+                                Temperature
+                                <span class="badge badge-primary badge-pill">{{ data.temp_c}}'C</span>
+                                <span class="badge badge-primary badge-pill">{{ data.temp_f}}'F</span>
+                            </li>
+                             <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Feelslike
+                                <span class="badge badge-primary badge-pill">{{ data.feelslike_c}}'C</span>
+                                <span class="badge badge-primary badge-pill">{{ data.feelslike_f}}'F</span>
+                            </li>
+                            
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Wind
+                                <span class="badge badge-primary badge-pill">{{ data.wind_mph}}mph</span>
+                                <span class="badge badge-primary badge-pill">{{ data.wind_kph}}kph</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Dapibus ac facilisis in
-                                <span class="badge badge-primary badge-pill">2</span>
+                                Pressure
+                                <span class="badge badge-primary badge-pill">{{ data.pressure_mb}}mb</span>
+                                <span class="badge badge-primary badge-pill">{{ data.pressure_in}}in</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
+                                Wind direction
+                                <span class="badge badge-primary badge-pill">{{ data.wind_dir}}</span>
                             </li>
+                            
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
+                                Humidity
+                                <span class="badge badge-primary badge-pill">{{ data.humidity}}</span>
                             </li>
                         </ul>
+                        {% endfor %}
 
 
 
@@ -63,78 +80,65 @@
             
             
 
-            {% comment %} <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas  mr-1"></i>
-                        Bar Chart Example
-                    </div>
-                    <div class="card-body">
-                    
-                    </div>
-                </div>
-            </div>  {% endcomment %}
-        {% comment %} </div> {% endcomment %}
         <div class="card mb-4 mt-8">
             <div class="card-header">
                 <i class="fas fa-table mr-1"></i>
-                Popular Cities
+                <h5>Current Weather Conditions Accross Featured Cities</h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                             <tr>
+                                <th>City</th>
+                                <th>Temperature</th>
+                                <th>Fealslike...</th>
+                                <th>Description</th>
+                                <th>Wind_speed.</th>
+                                <th>Pressure</th>
+                                <th>Humidity</th>
+                                <th>localtime</th>
+                               
+                                
                             </tr>
+                            
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>City</th>
+                                <th>Temperature</th>
+                                <th>Fealslike...</th>
+                                <th>Description</th>
+                                <th>Wind_speed.</th>
+                                <th>Pressure</th>
+                                <th>Humidity</th>
+                                <th>localtime</th>
+                                
+                                
                             </tr>
                         </tfoot>
                         <tbody>
+                            {% for data in weatherdata_list %}
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
+                                <td><h5><span><a href="{% url 'citydetail' data.city %}">{{data.city}}</a></span></h5> | <span><image src="https:{{data.icon}}"></span></td>
+                                <td><span>{{data.temp_c}}'C | </span><span>{{data.temp_f}}'F</span></td>
+                                <td><span>{{data.feelslike_c}}'C | </span><span>{{data.feelslike_f}}'F</span></td>
+                                <td>{{data.description}}</td>
+                                <td><span>{{data.wind_mph}}mph | </span><span>{{data.wind_kph}}kph</span></td>
+                                <td><span>{{data.pressure_mb}}mb | </span><span>{{data.pressure_in}}in</span></td>
+                                <td>{{data.humidity}}</td>
+                                <td>{{data.localtime}}</td>
                             </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>
-                            <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td>2011/01/25</td>
-                                <td>$112,000</td>
-                            </tr>
+                            {% endfor %}
+                            
+                           
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6">
+            {% comment %} <div class="col-xl-6">
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-chart-area mr-1"></i>
@@ -151,7 +155,7 @@
                     </div>
                     <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
         
     </div>

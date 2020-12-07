@@ -1,0 +1,22 @@
+[
+    {
+        "city": "canada",
+        "region": "Ontario",
+        "country": "Canada",
+        "localtime": "2020-12-06 17:57",
+        "temp_c": -3.0,
+        "temp_f": 26.6,
+        "description": "Partly cloudy",
+        "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+        "wind_mph": 15.0,
+        "wind_kph": 24.1,
+        "wind_dir": "WNW",
+        "pressure_mb": 1011.0,
+        "pressure_in": 30.3,
+        "precip_in": 0.0,
+        "precip_mm": 0.0,
+        "humidity": 68,
+        "feelslike_c": -9.4,
+        "feelslike_f": 15.1
+    }
+]

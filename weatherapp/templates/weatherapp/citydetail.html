@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block main %}
+<main>
+  <div class="card bg-dark text-white">
+    <img src="{% static 'myapps/image/weatherhome.png' %}" class="card-img" alt="...">
+    {% for weatherdata in average_weatherdata3day_list%}
+    
+    <div class="card-img-overlay">
+        <h5 class="card-title">{{weatherdata.city}}</h5>
+        <p class="card-text">Temp {{data.temp_c}}</p>
+        <p class="card-text"></p>
+        
+    </div>
+    {% endfor  %}
+
+</div>
+    <div class="container-fluid">
+        <h1 class="mt-4" style= "color:white;">Weather Info</h1>
+        {% comment %} <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">user location</li>
+        </ol> {% endcomment %}
+        <nav class="navbar navbar-light  mb-4 ">
+            <a href = "{% url 'weatherhome' %}"class="navbar-brand ">Weather Home</a>
+            <form method = 'Post' class="  form-inline">
+               {% csrf_token %}
+
+               {{form.name}}
+                <button class="btn my-btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="row"> 
+            <div class="col-xl-6">
+                <div class="mb-9">
+                    
+                <div class="card-body customCard text-center" style= " color:white;  ">
+                   {% if searched_cityweather %}
+                     {% for weatherdata in searched_cityweather %}
+                        <h4> Today Current Weather Info</h4>
+                        <h2 ><image src="https:{{ weatherdata.icon}}"><span style="color:blue;font-weight:bold">City: {{ weatherdata.city }}</span> </h2>
+                        <h3>{{weatherdata.description}}</h3>
+                            
+                            <ul class="list-group " style = "margin-top:40px; margin-bottom:20px;">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Temperature
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.temp_c}}'C</span>
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.temp_f}}'F</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Feelslike
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.feelslike_c}}'C</span>
+                                    <span class="badge badge-primary badge-pill">{{ weatherdata.feelslike_f}}'F</span>
+                                </li>
+                                
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Wind
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_mph}}mph</span>
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_kph}}kph</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Pressure
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.pressure_mb}}mb</span>
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.pressure_in}}in</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Wind direction
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_dir}}</span>
+                                </li>
+                                
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Humidity
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.humidity}}</span>
+                                </li>
+                            </ul> 
+                    {% endfor %} 
+                    {% else %}
+                    
+                 
+                   
+                      
+                     {% for weatherdata in weatherdata1day_list %}
+                        <h4> Current Weather Info</h4>
+                        <h2 ><image src="https:{{ weatherdata.icon}}"><span style="color:blue;font-weight:bold">City: {{ weatherdata.city }}</span> </h2>
+                        <h3>{{weatherdata.description}}</h3>
+                            
+                            <ul class="list-group " style = "margin-top:40px; margin-bottom:20px;">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Temperature
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.temp_c}}'C</span>
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.temp_f}}'F</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Feelslike
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.feelslike_c}}'C</span>
+                                    <span class="badge badge-primary badge-pill">{{ weatherdata.feelslike_f}}'F</span>
+                                </li>
+                                
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Wind
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_mph}}mph</span>
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_kph}}kph</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Pressure
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.pressure_mb}}mb</span>
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.pressure_in}}in</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Wind direction
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_dir}}</span>
+                                </li>
+                                
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Humidity
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.humidity}}</span>
+                                </li>
+                            </ul> 
+                    {% endfor %} 
+                    {% endif %}                                           
+                </div>
+                   
+             </div>
+            </div>
+            
+                   
+            <div class="col-xl-6  ">
+                <div class="mb-9 d-none">
+                <div class="card-body customCard text-center" style= " color:white;  ">
+                        
+                    </div>
+
+                </div>
+            </div>
+                
+        </div>
+            
+
+            
+            
+
+        <div class="card mb-4 mt-8">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                {% if searched_cityweather %}
+                {% for data in searched_cityweather %}
+                3 days Weather Forecast in {{ data.city }}
+                {% endfor %} 
+                {% else %}
+                {% for data in weatherdata1day_list %}
+                3 days Weather Forecast in {{ data.city }}
+                {% endfor %} 
+                {% endif %}
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                             <tr>
+                                <th>Date and Time</th>
+                                <th>Temperature</th>
+                                <th>Fealslike</th>
+                                <th>Description</th>
+                                <th>Windspeed</th>
+                                <th>Pressure</th>
+                                <th>Humidity</th>
+                                <th>Chance of rain</th>
+                               
+                                
+                            </tr>
+                            
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Date and Time</th>
+                                <th>Temperature</th>
+                                <th>Fealslike</th>
+                                <th>Description</th>
+                                <th>Windspeed</th>
+                                <th>Pressure</th>
+                                <th>Humidity</th>
+                                <th>Chance of rain</th>
+                                
+                                
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                              {% if searched_cityweather %}
+                            {% for data in searched_weatherdata3days_list %}
+                                
+                            <tr>
+                                <td>{{data.alldatetime}}<image src="https:{{data.allicon}}"></td>
+                                <td><span>{{data.alltemp_c}}'C | </span><span>{{data.alltemp_f}}'F</span></td>
+                                <td><span>{{data.allfeelslike_c}}'C | </span><span>{{data.allfeelslike_f}}'F</span></td>
+                                <td>{{data.alldescription}}</td>
+                                <td><span>{{data.allwind_mph}}mph | </span><span>{{data.allwind_kph}}kph</span></td>
+                                <td><span>{{data.allpressure_mb}}mb | </span><span>{{data.allpressure_in}}in</span></td>
+                                <td>{{data.allhumidity}}</td>
+                                
+                                <td>{{data.allwill_it_rain}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                              {% for data in weatherdata3days_list %}
+                                
+                            <tr>
+                                <td>{{data.alldatetime}}<image src="https:{{data.allicon}}"></td>
+                                <td><span>{{data.alltemp_c}}'C | </span><span>{{data.alltemp_f}}'F</span></td>
+                                <td><span>{{data.allfeelslike_c}}'C | </span><span>{{data.allfeelslike_f}}'F</span></td>
+                                <td>{{data.alldescription}}</td>
+                                <td><span>{{data.allwind_mph}}mph | </span><span>{{data.allwind_kph}}kph</span></td>
+                                <td><span>{{data.allpressure_mb}}mb | </span><span>{{data.allpressure_in}}in</span></td>
+                                <td>{{data.allhumidity}}</td>
+                                
+                                <td>{{data.allwill_it_rain}}</td>
+                            </tr>
+                            {% endfor %}
+
+                            {% endif %}
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area mr-1"></i>
+                        Tempetature chart
+                    </div>
+                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        Rain Fall Chart
+                    </div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>
+
+{% endblock %}

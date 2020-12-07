@@ -1,0 +1,22 @@
+[
+    {
+        "city": "new york",
+        "region": "New York",
+        "country": "United States of America",
+        "localtime": "2020-12-06 19:45",
+        "temp_c": 1.7,
+        "temp_f": 35.1,
+        "description": "Sunny",
+        "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+        "wind_mph": 0.0,
+        "wind_kph": 0.0,
+        "wind_dir": "NW",
+        "pressure_mb": 1011.0,
+        "pressure_in": 30.3,
+        "precip_in": 0.0,
+        "precip_mm": 0.0,
+        "humidity": 52,
+        "feelslike_c": -3.5,
+        "feelslike_f": 25.7
+    }
+]
