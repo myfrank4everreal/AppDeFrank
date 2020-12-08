@@ -1,0 +1,117 @@
+{% extends 'mainbase.html' %}
+{% load static %}
+
+{% block main %}
+             
+
+                <main>
+                {% comment %} the head banner {% endcomment %}
+
+            
+                 <div class="card bg-dark text-white" style="margin-top:">
+                <img src="{% static 'myapps/image/home_image.png' %}" class="card-img" alt="...">
+                <div class="card-img-overlay ml-auto">
+                    <h5 class="card-title">Calculator</h5>
+                    <p class="card-text"> </p>
+                    
+                </div>
+                </div>
+                    <div class="container-fluid">
+                      {% comment %} <div class = "mycontainer"> {% endcomment %}
+
+                        
+                        <ol class="breadcrumb mb-4">
+                            {% comment %} <li class="breadcrumb-item active">Dashboard</li> {% endcomment %}
+                            
+                        </ol>
+                        
+                        <div class="row">
+                            <div class="col-xl-6  col-md-6" style="margin-bottom:20px">
+                            <div class="customCard" style="width: auto; ">
+                                       
+                                        <div class="card-body">
+                                        <div class="card-header">
+                                           <h5 class="card-title">Calculators</h5>
+                                        </div>
+                                             <ul class="list-group " style = "margin-top:40px; margin-bottom:20px;">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Scientific Calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.temp_c}}</span>
+                                </li>
+
+                                <a href= "{% url 'mortgagecalc' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Mortgage calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.humidity}}</span>
+                                   </li>
+                                </a>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    BMI calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.feelslike_c}}</span>
+                                </li>
+                                
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Conversiion Calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_mph}}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Concrete calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.pressure_mb}}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Discount calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.wind_dir}}</span>
+                                </li>
+                                
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Return on investment
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.humidity}}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Rent Vs Buy calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.humidity}}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Business / personal loan calculator
+                                    <span class="badge badge-primary badge-pill">{{weatherdata.humidity}}</span>
+                                </li>
+                            </ul> 
+             
+                                        </div>
+                                    </div>
+                                
+                                
+                            </div>
+                               
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        {% comment %} <i class="fas fa-chart-area mr-1"></i>
+                                        Calculators {% endcomment %}
+                                    </div>
+                                    <div class="card-body">
+                                      {% comment %} my input {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                            
+                                {% comment %} <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar mr-1"></i>
+                                        None 
+                                    </div>
+                                    <div class="card-body"></div>
+                                </div> {% endcomment %}
+                            
+                            </div>
+                        </div> 
+
+                      {% comment %} </div> {% endcomment %}
+                    </div>
+                </main>
+{% endblock %}

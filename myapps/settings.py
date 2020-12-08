@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['appdefrank.herokuapp.com/', '127.0.0.1']
 
 INSTALLED_APPS = [
     'main_',
+    'calculatorapp',
     'weatherapp',
     'django.contrib.admin',
     'django.contrib.auth',
