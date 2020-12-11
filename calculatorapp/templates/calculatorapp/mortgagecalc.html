@@ -4,119 +4,235 @@
 {% block main %}
              
 
-                <main>
-                {% comment %} the head banner {% endcomment %}
+<main>
+{% comment %} the head banner {% endcomment %}
 
-            
-                 <div class="card bg-dark text-white" style="margin-top:">
-                <img src="{% static 'myapps/image/home_image.png' %}" class="card-img" alt="...">
-                <div class="card-img-overlay ml-auto">
-                    <h5 class="card-title">Mortgage Calculator</h5>
-                    <p class="card-text"> </p>
+
+<div class="card bg-dark text-white" style="margin-top:">
+    <img src="{% static 'myapps/image/home_image.png' %}" class="card-img" alt="...">
+    <div class="card-img-overlay ml-auto">
+        <h5 class="card-title">Mortgage Calculator</h5>
+        <p class="card-text"> </p>
+        
+    </div>
+</div>
+<div class="container-fluid">
+        {% comment %} <div class = "mycontainer"> {% endcomment %}
+        <ol class="breadcrumb mb-4">
+            {% comment %} <li class="breadcrumb-item active">Dashboard</li> {% endcomment %}
+        </ol>
+    <div class="row">
+                 <div class="card-header">
+                        <h5 class="card-title text-center" style="color:white;">
+                            The Mortgage Calculator can be used to estimate the monthly payment </b>
+                            and other financial costs associated with mortgages.
+                        </h5>
+                    </div>
+        
+        <div class="col-xl-6  " style="margin-bottom:20px">
+            <div class="card" style="width: auto; background-color:#4F5D75">
                     
-                </div>
-                </div>
-                    <div class="container-fluid">
-                      {% comment %} <div class = "mycontainer"> {% endcomment %}
-
-                        
-                        <ol class="breadcrumb mb-4">
-                            {% comment %} <li class="breadcrumb-item active">Dashboard</li> {% endcomment %}
-                            
-                        </ol>
-                        
-                        <div class="row">
-                            <div class="col-xl-6  col-md-6" style="margin-bottom:20px">
-                            <div class="card" style="width: auto; background-color:#4F5D75">
-                                       
-                                        <div class="card-body">
-                                        <div class="card-header">
-                                           <h5 class="card-title text-center">Mortgage calculator</h5>
-                                        </div>
-                                        <form>
-                                            <div class="form-row">
-                                                <div class="col-6 mb-4 mt-3">
-                                                <h5> Home price</h5>
-                                                </div>
-                                                <div class="col mt-3">
-                                                <input type="text" class="form-control" placeholder="$">
-                                                </div>
-
-                                                <div class="col-6 mb-4">
-                                                <h5> Down payment</h5>
-                                                </div>
-                                                <div class="col">
-                                                <input type="text" class="form-control" placeholder="$">
-                                                </div>
-
-                                                 <div class="col-6 mb-4">
-                                                <h5> Loan term </h5>
-                                                </div>
-                                                <div class="col">
-                                                <input type="text" class="form-control" placeholder="years">
-                                                </div>
-
-                                                 <div class="col-6 mb-4">
-                                                <h5> Interest rate </h5>
-                                                </div>
-                                                <div class="col">
-                                                <input type="text" class="form-control" placeholder="%">
-                                                </div>
-
-                                                 <div class="col-6 mb-4">
-                                                <h5> Start Date</h5>
-                                                </div>
-                                                <div class="col">
-                                                <input type="text" class="form-control" placeholder="month">
-                                                </div>
-                                                <div class="col">
-                                                <input type="text" class="form-control" placeholder="year">
-                                                </div>
-
-
-
-
-
-
-
-                                                
-                        
-                                            </div>
-                                        </form>
-             
-                                        </div>
-                                    </div>
-                                
-                                
+                <div class="card-body">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Mortgage calculator</h5>
+                    </div>
+                    <form action = "{% url 'mortgagecalc' %}" method= "post">
+                    {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-6 mb-4 mt-3">
+                            <h5> Loan </h5>
                             </div>
-                               
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        {% comment %} <i class="fas fa-chart-area mr-1"></i>
-                                        Calculators {% endcomment %}
-                                    </div>
-                                    <div class="card-body">
-                                      {% comment %} my input {% endcomment %}
-                                    </div>
+                                <div class="col mt-3">
+                                <input type="text" name ='loan' value='600000' class="form-control" placeholder="$">
+                                </div>
+
+                                <div class="col-6 mb-4">
+                                <h5> Down payment</h5>
+                                </div>
+                                <div class="col">
+                                <input type="text" name = 'downpayment' value='40000' class="form-control" placeholder="$ ">
+                                </div>
+
+                                <div class="col-6 mb-4">
+                                    <h5> Loan term </h5>
+                                </div>
+                                <div class="col">
+                                    <input type="text" name= 'years' value='20' class="form-control" placeholder="years">
+                                </div>
+
+                                    <div class="col-6 mb-4">
+                                    <h5> Interest rate </h5>
+                                </div>
+                                <div class="col">
+                                    <input type="text" name = 'interest' value= '5' class="form-control" placeholder="%">
+                                </div>
+
+                                <div class="col-6 mb-4">
+                                <h5> Start Date</h5>
+                                </div>
+                                
+                                <div class="form-group col">
+                                <label for="inputState"></label>
+                                
+                                <select id="inputState" type = 'input' class="form-control">
+                                  
+                                    <option value='jan'>Jan</option>
+                                    <option value='Feb'>Feb</option>
+                                    <option>Mar</option>
+                                    <option>Apr</option>
+                                    <option>May</option>
+                                    <option>Jun</option>
+                                    <option>Jul</option>
+                                    <option>Aug</option>
+                                    <option>Sep</option>
+                                    <option>Oct</option>
+                                    <option>Nov</option>
+                                    <option>Dec</option>
+                                  
+                                </select>
+                                </div>
+                                <div class="col" >
+                                <input type="text" style='margin-top:24px;' value='2021' name='year' class="form-control" placeholder="year">
+                                </div> 
+                                
+                                <div class= "col-7 text-center" style= "margin-left:200px;">
+                                <button class="btn my-btn" style = 'width:200px' type="input">Submit</button>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                    </form>
+                        
+                        {% comment %} this is the result area {% endcomment %}
+                           {% if total_interest %}
                             
-                                {% comment %} <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar mr-1"></i>
-                                        None 
+                            <div class = " mt-6 " style="margin-top:50px; padding-right:5px; padding-left:5px; margin-bottom:20px;">
+                                <div class="card-header">
+                                    <h4 class="card-title ">Result</h4>                                                   
+                                </div>
+                                  
+                                <div class = ' form-row mt-6 mt-6' style="margin-bottom:30px;">
+                                    
+                                    <div class=" col-6 mb-4" style="padding-top:10px;">
+                                        <h6> Loan amount: </h6>
                                     </div>
-                                    <div class="card-body"></div>
-                                </div> {% endcomment %}
-                            
-                            </div>
-                        </div> 
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;" >
+                                        <h5>${{ Loan_amount }}</h5>
+                                    </div>
 
-                      {% comment %} </div> {% endcomment %}
+                                    <div class=" col-6 mb-4" style="padding-top:10px;">
+                                        <h6> Your monthly payment: </h6>
+                                    </div>
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;" >
+                                        <h5>${{ result }}</h5>
+                                    </div>
+
+                                    <div class="col-6 mb-4" style="padding-top:10px;">
+                                        <h6> Pay off year </h6>
+                                    </div>
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;">
+                                        <h5>{{pay_off_month}}  {{pay_off_year}}</h5>
+                                    </div>
+
+                                    <div class="col-6 mb-4" style="padding-top:10px;">
+                                        <h6> total interest paid: </h6>
+                                    </div>
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;">
+                                            <h5>${{total_interest}}</h5>
+                                    </div>
+
+                                    <div class="col-6 mb-4" style="padding-top:10px;">
+                                        <h6>Total mortgage payment:</h6>
+                                    </div>
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;">
+                                        <h5>${{total_mortgage_with_interest}}</h5>
+                                    </div>
+                                     
+                                </div>
+                            </div> 
+                            </br>
+                            {% else %} 
+                            
+                                {% if message %} 
+                                
+                                 <div class="alert alert-danger mt-6" class="toast"  role="alert" aria-live="assertive" aria-atomic="true">
+                                    <strong>Error!</strong>{{ message }}
+                                    
+                                    </div>
+
+                                                     
+
+                                {% endif %} 
+
+                               
+
+                            {% endif %}     
+
+                                
+
+                              
+                                                            
+                
+                            
+                </div>
+              </div>  
+            </div> 
+              {% comment %} the right card {% endcomment %}
+         <div class="col-xl-6">
+            
+                <div class="card mb-4 text-center  customCard">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        What is Mortgage
                     </div>
-                </main>
+                    <div class="card-body " style="background-color:gray; border-color:orange;">
+                        <p> A mortgage is a loan secured by property, 
+                        usually real estate property.
+                         Lenders define it as the money borrowed to pay 
+                         for real estate. In essence, the lender helps the 
+                         buyer pay the seller of a house, and the buyer agrees 
+                         to repay the money borrowed over a period of time, 
+                         usually 15 or 30 years. Each month, a payment is made
+                        from buyer to lender. A portion of the monthly payment 
+                        is called the principal, which is the original amount borrowed.
+                        The other portion is interest, which is the cost paid 
+                        to the lender for using the money. 
+                        There may be an escrow account involved to cover the 
+                        cost of property taxes and insurance.
+                        The buyer cannot be considered the full owner
+                        of the mortgaged property until the last monthly payment is made.
+                        In U.S., the most common loan is the conventional 30-year 
+                        fixed-interest loan, which represents 70% to 90% of all mortgages.
+                        Mortgages are how most people are able to own homes in the U.S. </p>
+                     </div>
+                </div> 
+            
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-xl-6 ">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        {% comment %} <i class="fas fa-chart-area mr-1"></i>
+                        Calculators {% endcomment %}
+                    </div>
+                    <div class="card-body">
+                        {% comment %} my input {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            {% comment %} <div class="col-xl-6">
+            
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        None 
+                    </div>
+                    <div class="card-body"> this is the body</div>
+                </div> 
+            
+            </div> {% endcomment %}
+        </div> 
+
+        {% comment %} </div> {% endcomment %}
+    </div>
+</main>
 {% endblock %}
