@@ -83,8 +83,61 @@ def mortgageCalc(request):
     return render(request, 'calculatorapp/mortgagecalc.html', context)
 
 
-def get_result(request):   
-    return redirect("mortgage")
+
+# ******************************BMI CALCULATOR***************************************
+def Bmi(request):
+    height = 0
+    body_weight = 0 
+    result = 0
+    message = 0
+    select_weight = 0
+    user_message = 0
+    convert_weight = 0
+    kg = 0
+    ibs = 0
+
+    try:
+
+        if request.method == "POST":
+            body_weight = float(request.POST.get('bodyweight'))  
+            input_height_cm = float(request.POST.get('height'))
+            select_weight = (request.POST.get('weightselector'))
+
+            # convert to meter
+            height_meter = input_height_cm/100
+            height = round(height_meter**2, 3)
+
+            
+            if select_weight == 'kg':
+                result = round(body_weight/height, 2)
+            else:
+                if select_weight == 'Ibs':
+                    convert_weight = round(body_weight/2.20462262185, 2)
+                    result = round(convert_weight/height, 2)
+
+            if result < 25 or result >= 18.5:
+                user_message = "  weight is considered normal"
+            if result > 24.9:
+                user_message = "you are over weight"
+            if result < 18.5 :
+                user_message = " you are under weight"
+
+    except ValueError as err_msg :
+        err_msg = "Invalid entry, please check your figures"
+        message = err_msg
+
+    # select weight  
+    
+    context = {
+        'select_weight':select_weight,
+        'convert_weight': convert_weight,
+        'height':height,
+        'body_weight':body_weight,
+        'result':result,
+        'message':message,
+        'user_message':user_message,
+    }
+    return render(request, 'calculatorapp/bmi.html', context)
 
 
 def scientificHome(request):

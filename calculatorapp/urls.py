@@ -20,7 +20,8 @@ from . import views
 urlpatterns = [
     path('', views.Calculate, name='calhome'),
     path('mortgage/', views.mortgageCalc, name='mortgagecalc'),
+    path('BMI/', views.Bmi, name = 'bmi'),
     path('Scientific_calculator/', views.scientificHome, name='scientific'),
-    path('', views.get_result, name = 'result')
+    
     
 ]

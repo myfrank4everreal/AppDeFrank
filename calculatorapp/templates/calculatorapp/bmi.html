@@ -1,0 +1,211 @@
+{% extends 'mainbase.html' %}
+{% load static %}
+
+{% block main %}
+             
+
+<main>
+{% comment %} the head banner {% endcomment %}
+
+
+<div class="card bg-dark text-white" style="margin-top:">
+    <img src="{% static 'myapps/image/home_image.png' %}" class="card-img" alt="...">
+    <div class="card-img-overlay ml-auto">
+        <h5 class="card-title">BMI CALCULATOR</h5>
+        <p class="card-text"> </p>
+        
+    </div>
+</div>
+<div class="container-fluid">
+        {% comment %} <div class = "mycontainer"> {% endcomment %}
+        <ol class="breadcrumb mb-4">
+            {% comment %} <li class="breadcrumb-item active">Dashboard</li> {% endcomment %}
+        </ol>
+    <div class="row">
+                 <div class="card-header">
+                        <h5 class="card-title text-center" style="color:white;">
+                            BMI is an acronym for Body Mass Index
+                            Body Mass Index is a simple calculation 
+                            using a person’s height and weight. 
+                            The formula is BMI = kg/m<sup>2</sup> where kg 
+                            is a person’s weight in kilograms and m<sup>2</sup>
+                            is their height in metres squared.
+                            A BMI of 25.0 or more is overweight,
+                            while the healthy range is 18.5 to 24.9.
+                            BMI applies to most adults 18-65 years.
+                                                    
+                        </h5>
+                    </div>
+        
+        <div class="col-xl-6  " style="margin-bottom:20px">
+            <div class="card" style="width: auto; background-color:#4F5D75">
+                    
+                <div class="card-body">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Body Mass Index(BMI) Calculator</h5>
+                    </div>
+                    <form action = "{% url 'bmi' %}" method= "post">
+                    {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-6 mb-4 mt-3">
+                            <h5> Body weight<sub></sub></h5>
+                            </div>
+                                <div class="col mt-3">
+                                <input type="text" name ='bodyweight' value='0' class="form-control" placeholder="kg">
+                                </div>
+                                 <div class="form-group" style="margin-top:15px" name = ''>
+                                    {% comment %} <label for="exampleFormControlSelect1"></label> {% endcomment %}
+                                    <select class="form-control" name='weightselector' id="exampleFormControlSelect1">
+                                    <option>kg</option>
+                                    <option>Ibs</option>
+                                    
+                                    </select>
+                                </div>
+
+                                <div class="col-6 mb-4">
+                                <h5> Height<sub>(cm)</sub></h5>
+                                </div>
+                                <div class="col">
+                                <input type="text" name = 'height' value='0' class="form-control" placeholder="cm">
+                                </div>
+
+
+                                
+                                <div class= "col-7 text-center" style= "margin-left:200px;">
+                                <button class="btn my-btn" style = 'width:200px' type="input">Submit</button>
+                                </div>
+                            </div>
+                    </form>
+                        
+                        {% comment %} this is the result area {% endcomment %}
+                           {% if result %}
+                            
+                            <div class = " mt-6 " style="margin-top:50px; padding-right:5px; padding-left:5px; margin-bottom:20px;">
+                                <div class="card-header">
+                                    <h4 class="card-title ">Result</h4>                                                   
+                                </div>
+                                  
+                                <div class = ' form-row mt-6 mt-6' style="margin-bottom:30px;">
+                                    
+                                    <div class=" col-6 mb-4" style="padding-top:10px;">
+                                        <h6> Height: </h6>
+                                    </div>
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;" >
+                                        <h5>{{ height }}m<sup>2</sup></h5>
+                                    </div>
+                                    </br>
+                                    </br>
+
+                                    <div class=" col-6 mb-4" style="padding-top:10px;">
+                                        <h6> weight: </h6>
+                                    </div>
+                                     
+                                     {% if convert_weight %}
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;" >
+                                        <h5>{{ convert_weight }}kg</h5>
+                                    </div>
+                                    {% else %}
+                                     <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;" >
+                                        <h5>{{ body_weight }}kg</h5>
+                                    </div>
+                                    {% endif %}
+                                    </br>
+                                    </br>
+
+                                    <div class="col-6 mb-4" style="padding-top:10px;">
+                                        <h6> Your BMI is </h6>
+                                    </div>
+                                    <div class="col text-center" style = "color:black; padding-top:10px; background-color:#EF8354; border-radius:6px;">
+                                        <h5>{{result}}</h5>
+                                    </div>
+                                     <hr>
+                                     {% if user_message %} 
+                                    <div class="alert alert-info mt-6" class="toast"  role="alert" aria-live="assertive" aria-atomic="true">
+                                        <strong></strong>{{ user_message }}
+                                    </div>                                                 
+                                    {% endif %} 
+
+                                     
+                                </div>
+                            </div> 
+                            </br>
+                            {% else %} 
+                            
+                                {% if message %} 
+                                <div class="alert alert-danger mt-6" class="toast"  role="alert" aria-live="assertive" aria-atomic="true">
+                                    <strong>Error!</strong>{{ message }}
+                                    
+                                </div>                                                 
+                                {% endif %} 
+
+                               
+
+                            {% endif %}     
+
+                                
+
+                              
+                                                            
+                
+                            
+                </div>
+              </div>  
+            </div> 
+              {% comment %} the right card {% endcomment %}
+         <div class="col-xl-6">
+            
+                <div class="card mb-4 text-center  customCard">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        Who shouldn't use a BMI calculator
+                    </div>
+                    <div class="card-body " style="background-color:gray; border-color:orange;">
+                        <p> 
+                        BMI is not used for muscle builders, 
+                        long distance athletes, pregnant women, 
+                        the elderly or young children. 
+                        This is because BMI does not take into account 
+                        whether the weight is carried as muscle or fat, 
+                        just the number. Those with a higher muscle mass,
+                        such as athletes, may have a high BMI 
+                        but not be at greater health risk. 
+                        Those with a lower muscle mass, such as children
+                        who have not completed their growth or the elderly
+                        who may be losing some muscle mass may have a lower BMI. 
+                        During pregnancy and lactation, a woman's body composition
+                        changes, so using BMI is not appropriate.
+                        </p>
+                     </div>
+                </div> 
+            
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-xl-6 ">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        {% comment %} <i class="fas fa-chart-area mr-1"></i>
+                        Calculators {% endcomment %}
+                    </div>
+                    <div class="card-body">
+                        {% comment %} my input {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            {% comment %} <div class="col-xl-6">
+            
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        None 
+                    </div>
+                    <div class="card-body"> this is the body</div>
+                </div> 
+            
+            </div> {% endcomment %}
+        </div> 
+
+        {% comment %} </div> {% endcomment %}
+    </div>
+</main>
+{% endblock %}
